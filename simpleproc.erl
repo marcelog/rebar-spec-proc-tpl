@@ -55,7 +55,7 @@ loop(Parent, Debug, State) ->
         Msg ->
             % Let's print unknown messages.
             sys:handle_debug(
-                Debug, fun ?MODULE:write_debug/3, ?MODULE, Msg
+                Debug, fun ?MODULE:write_debug/3, ?MODULE, {in, Msg}
             )
     end,
     loop(Parent, Debug, State).
