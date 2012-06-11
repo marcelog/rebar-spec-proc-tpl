@@ -9,7 +9,7 @@
 %%-----------------------------------------------------------------------------
 %% API Function Exports
 %%-----------------------------------------------------------------------------
--export([start_link/0, init/1]).
+-export([start_link/0, init/1, loop/3]).
 
 %%-----------------------------------------------------------------------------
 %% Required OTP Exports
@@ -66,7 +66,7 @@ write_debug(Dev, Event, Name) ->
 %% @doc http://www.erlang.org/doc/man/sys.html#Mod:system_continue-3
 system_continue(Parent, Debug, State) ->
     io:format("Continue!~n"),
-    loop(Parent, Debug, State).
+    ?MODULE:loop(Parent, Debug, State).
 
 %% @doc http://www.erlang.org/doc/man/sys.html#Mod:system_terminate-4
 system_terminate(Reason, _Parent, _Debug, _State) ->
