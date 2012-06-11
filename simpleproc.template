@@ -1,0 +1,2 @@
+{variables, [{id, "myspecialproc"}]}.
+{template, "simpleproc.erl", "src/{{id}}.erl"}.
