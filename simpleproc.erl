@@ -6,7 +6,6 @@
 %%% See http://www.erlang.org/doc/design_principles/spec_proc.html
 %%% For system messages, see: http://www.erlang.org/doc/man/sys.html
 -module({{id}}).
-
 %%-----------------------------------------------------------------------------
 %% API Function Exports
 %%-----------------------------------------------------------------------------
@@ -56,9 +55,9 @@ loop(Parent, Debug, State) ->
             % Let's print unknown messages.
             sys:handle_debug(
                 Debug, fun ?MODULE:write_debug/3, ?MODULE, {in, Msg}
-            )
-    end,
-    loop(Parent, Debug, State).
+            ),
+            ?MODULE:loop(Parent, Debug, State)
+    end.
 
 %% @doc Called by sys:handle_debug().
 write_debug(Dev, Event, Name) ->
@@ -66,13 +65,16 @@ write_debug(Dev, Event, Name) ->
 
 %% @doc http://www.erlang.org/doc/man/sys.html#Mod:system_continue-3
 system_continue(Parent, Debug, State) ->
+        io:format("Continue!~n"),
     loop(Parent, Debug, State).
 
 %% @doc http://www.erlang.org/doc/man/sys.html#Mod:system_terminate-4
 system_terminate(Reason, _Parent, _Debug, _State) ->
+        io:format("Terminate!~n"),
     exit(Reason).
 
 %% @doc http://www.erlang.org/doc/man/sys.html#Mod:system_code_change-4
 system_code_change(State, _Module, _OldVsn, _Extra) ->
+    io:format("Changed code!~n"),
     {ok, State}.
 
