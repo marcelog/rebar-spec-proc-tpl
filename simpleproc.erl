@@ -65,12 +65,12 @@ write_debug(Dev, Event, Name) ->
 
 %% @doc http://www.erlang.org/doc/man/sys.html#Mod:system_continue-3
 system_continue(Parent, Debug, State) ->
-        io:format("Continue!~n"),
+    io:format("Continue!~n"),
     loop(Parent, Debug, State).
 
 %% @doc http://www.erlang.org/doc/man/sys.html#Mod:system_terminate-4
 system_terminate(Reason, _Parent, _Debug, _State) ->
-        io:format("Terminate!~n"),
+    io:format("Terminate!~n"),
     exit(Reason).
 
 %% @doc http://www.erlang.org/doc/man/sys.html#Mod:system_code_change-4
