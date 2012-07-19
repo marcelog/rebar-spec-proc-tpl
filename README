@@ -1,6 +1,7 @@
 About
 =====
-This is a rebar template for creating erlang special processes, as described in:
+This is a rebar template for creating erlang special processes, as described
+in:
 
  * http://www.erlang.org/doc/design_principles/spec_proc.html
  * http://www.erlang.org/doc/man/proc_lib.html
@@ -15,5 +16,11 @@ An article about special processes can be found here:
 
 Installation
 ============
-Just copy simpleproc.template to the priv/templates directory of your rebar
-installation.
+Just copy the simpleproc.* files to the "priv" directory of your rebar
+application or into the priv/templates directory of your rebar copy and
+recompile it.
+
+Use
+===
+$ rebar create template=simpleproc
+
